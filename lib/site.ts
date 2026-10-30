@@ -60,6 +60,7 @@ export const navigation: NavEntry[] = [
     ],
   },
   { label: "About", href: "/about" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Services", href: "/services" },
   {
     label: "Resources",

@@ -21,7 +21,7 @@ export function CtaBannerSection() {
             </h2>
 
             <p className="text-tagline-2 font-inter-tight text-white/60 max-w-lg">
-              <SplitReveal delay={0.2}>
+              <SplitReveal as="span" delay={0.2}>
                 Discover how Cirsec can help your organisation mitigate risk, train your team,
                 and establish reliable, proactive digital safety habits.
               </SplitReveal>

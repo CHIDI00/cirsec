@@ -39,17 +39,20 @@ export function PortfolioSection() {
   return (
     <section
       id="initiatives"
-      className="bg-background-6 relative overflow-hidden py-10 pt-20 sm:py-20 md:py-28 lg:py-36 xl:py-40 2xl:py-44"
+      className="bg-background-6 relative -my-0.5 overflow-hidden py-10 pt-20 sm:py-20 md:py-28 lg:py-36 xl:py-40 2xl:py-44"
     >
-      {/* Top gradient background */}
-      <div className="absolute -top-1 left-0 z-4 h-[796px] w-full md:h-[760px] lg:-top-4 2xl:-top-12 pointer-events-none">
+      {/* Top gradient background with seamless blend */}
+      <div className="absolute top-0 left-0 z-0 h-[760px] lg:h-[840px] w-full pointer-events-none select-none">
         <Image
-          src="/images/gradient/opai-1.png"
-          alt=""
+          src="/images/gradient/cirsec-gradient-1.png"
+          alt="Top blend mode"
           fill
-          className="object-cover opacity-60"
+          priority
+          className="object-cover object-top"
           sizes="100vw"
         />
+        {/* Soft feather overlay to guarantee 100% seamless transition from the white section above */}
+        <div className="absolute top-0 left-0 w-full h-28 bg-gradient-to-b from-[#f8f9fa] via-[#f8f9fa]/80 to-transparent pointer-events-none" />
       </div>
 
       <div className="main-container relative z-10">
@@ -59,12 +62,12 @@ export function PortfolioSection() {
             <h2
               className="font-sora md:text-sora-heading-3 text-sora-heading-4 lg:text-sora-heading-2 text-white/95 font-normal max-md:leading-[110%] lg:mx-auto lg:max-w-[650px]"
             >
-              <SplitReveal>
-                Delivering <span className="text-white/40">real, measurable impact.</span>
+              <SplitReveal className="text-black/90">
+                Delivering <span className="text-black/40">real, measurable impact.</span>
               </SplitReveal>
             </h2>
-            <p className="font-inter-tight text-tagline-2 text-white/60 font-normal lg:mx-auto lg:max-w-[420px]">
-              <SplitReveal delay={0.2}>
+            <p className="font-inter-tight text-tagline-2 text-black/60 font-normal lg:mx-auto lg:max-w-[420px]">
+              <SplitReveal as="span" delay={0.2}>
                 Explore how Cirsec’s educational clinics and threat assessments empower
                 teams to navigate digital risk with confidence.
               </SplitReveal>

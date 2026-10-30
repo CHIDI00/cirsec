@@ -3,7 +3,7 @@
 import { useEffect, useRef, type ComponentPropsWithoutRef, type ElementType } from "react";
 import { gsap, SplitText } from "@/lib/gsap";
 
-type SplitRevealProps = ComponentPropsWithoutRef<"div"> & {
+type SplitRevealProps = ComponentPropsWithoutRef<"span"> & {
   as?: ElementType;
   /** Seconds before the first line starts */
   delay?: number;
@@ -17,15 +17,17 @@ type SplitRevealProps = ComponentPropsWithoutRef<"div"> & {
 
 /**
  * Line-by-line masked text reveal. Equivalent of the template's `data-opai-split-text`.
- * Re-splits automatically when the font loads or the viewport is resized.
+ * Uses `span` by default so it can be safely nested inside `<p>` and heading tags
+ * without causing HTML hydration errors (`<div>` cannot be child of `<p>`).
  */
 export function SplitReveal({
-  as: Tag = "div",
+  as: Tag = "span",
   delay = 0.1,
   lineDelay = 0.15,
   duration = 0.9,
   instant = false,
   start = "top 90%",
+  className = "",
   children,
   ...props
 }: SplitRevealProps) {
@@ -63,7 +65,7 @@ export function SplitReveal({
   }, [delay, duration, instant, lineDelay, start]);
 
   return (
-    <Tag ref={ref} data-split="" {...props}>
+    <Tag ref={ref} data-split="" className={`inline-block ${className}`} {...props}>
       {children}
     </Tag>
   );

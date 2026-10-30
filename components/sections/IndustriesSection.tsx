@@ -86,7 +86,7 @@ export function IndustriesSection() {
               </SplitReveal>
             </h2>
             <p className="font-inter-tight text-tagline-2 text-background-13/60 font-normal lg:mx-auto lg:max-w-[420px]">
-              <SplitReveal delay={0.2}>
+              <SplitReveal as="span" delay={0.2}>
                 We partner with organisations across critical sectors to build proactive defense,
                 compliance confidence, and lasting cyber resilience.
               </SplitReveal>

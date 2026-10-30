@@ -24,7 +24,7 @@ export function EmpoweringSection() {
             >
               <SplitReveal>
                 Empowering your{" "}
-                <span className="text-white/40">
+                <span className="text-black/40">
                   organization <br className="hidden md:block" />
                   with cybersecurity expertise
                 </span>
@@ -32,10 +32,10 @@ export function EmpoweringSection() {
             </h2>
 
             <p
-              className="font-inter-tight text-tagline-2 text-white/60 mx-auto max-w-[460px] font-normal"
+              className="font-inter-tight text-tagline-2 text-black/60 mx-auto max-w-[460px] font-normal"
               itemProp="description"
             >
-              <SplitReveal delay={0.2}>
+              <SplitReveal as="span" delay={0.2}>
                 Through awareness, practical education, and modern threat defense,
                 Cirsec makes digital safety actionable for every team.
               </SplitReveal>
@@ -321,7 +321,7 @@ export function EmpoweringSection() {
                 </Reveal>
 
                 {/* Progress Card */}
-                <Reveal delay={0.2} className="border-stroke-1/18 z-10 w-full max-w-[270px] space-y-4 rounded-lg border border-white/10 bg-background-5/60 px-6 pt-5 pb-6 backdrop-blur-[20px] lg:max-w-[300px]">
+                <Reveal delay={0.2} className="border-stroke-1/18 z-10 w-full max-w-[270px] space-y-4 rounded-lg border border-white/10  px-6 pt-5 pb-6 backdrop-blur-[20px] lg:max-w-[300px]">
                   <div className="flex w-full items-center justify-between gap-x-2">
                     <h4 className="font-manrope text-manrope-heading-6 font-medium text-white/60">
                       Coverage
@@ -399,24 +399,27 @@ export function EmpoweringSection() {
         </div>
       </div>
 
-      {/* Top Gradient Background */}
-      <div className="absolute -top-10 left-0 z-4 h-[796px] w-full md:top-0 md:h-[760px] lg:-top-2 2xl:-top-12 pointer-events-none">
+      {/* Top Gradient Background with seamless blend */}
+      <div className="absolute top-0 left-0 z-0 h-[760px] lg:h-[840px] w-full pointer-events-none select-none">
         <Image
-          src="/images/gradient/opai-1.png"
-          alt=""
+          src="/images/gradient/cirsec-gradient-1.png"
+          alt="Top blend mode"
           fill
-          className="object-cover opacity-60"
+          priority
+          className="object-cover object-top"
           sizes="100vw"
         />
+        {/* Soft feather overlay to guarantee 100% seamless transition from the white section above */}
+        <div className="absolute top-0 left-0 w-full h-28 bg-gradient-to-b from-[#f8f9fa] via-[#f8f9fa]/80 to-transparent pointer-events-none" />
       </div>
 
       {/* Bottom Gradient Background */}
-      <div className="absolute -bottom-137 left-0 z-4 h-[696px] w-full min-[550px]:-bottom-119 md:-bottom-97 lg:-bottom-72 xl:-bottom-47 2xl:bottom-18 pointer-events-none">
+      <div className="absolute -bottom-137 left-0 z-0 h-[696px] w-full min-[550px]:-bottom-119 md:-bottom-97 lg:-bottom-72 xl:-bottom-47 2xl:bottom-18 pointer-events-none select-none">
         <Image
-          src="/images/gradient/opai-2.png"
-          alt=""
+          src="/images/gradient/cirsec-gradient-2.png"
+          alt="Bottom blend mode"
           fill
-          className="object-cover opacity-40"
+          className="object-cover"
           sizes="100vw"
         />
       </div>

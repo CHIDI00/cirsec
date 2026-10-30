@@ -80,7 +80,7 @@ export function TestimonialsSection() {
           {marqueeItems.map((item, index) => (
             <article
               key={`${item.author}-${index}`}
-              className="bg-background-5/70 border-stroke-1/11 relative flex min-h-[300px] w-[320px] md:w-[380px] shrink-0 flex-col justify-between rounded-xl border p-6 md:p-8 backdrop-blur-md shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:border-brand-cyan/40"
+              className=" border-stroke-1/11 relative flex min-h-[300px] w-[320px] md:w-[380px] shrink-0 flex-col justify-between rounded-xl border p-6 md:p-8 backdrop-blur-md shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:border-brand-cyan/40"
             >
               <div className="space-y-4">
                 <StarRating rating={5} />

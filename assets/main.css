@@ -3079,15 +3079,15 @@ dialog.modal-overlay.modal-close {
   }
 
   .bg-\[url\(\'\/images\/gradient\/opai-37\.jpg\'\)\] {
-    background-image: url("https://ai-solutions-tailwind.pixels71.workers.dev/images/gradient/opai-37.jpg");
+    background-image: url("../images/gradient/opai-37.jpg");
   }
 
   .bg-\[url\(\'\/images\/opai-avatar-img-281\.jpg\'\)\] {
-    background-image: url("https://ai-solutions-tailwind.pixels71.workers.dev/images/opai-avatar-img-281.jpg");
+    background-image: url("../images/opai-avatar-img-281.jpg");
   }
 
   .bg-\[url\(\'\/images\/opai-img-475\.jpg\'\)\] {
-    background-image: url("https://ai-solutions-tailwind.pixels71.workers.dev/images/opai-img-475.jpg");
+    background-image: url("../images/opai-img-475.jpg");
   }
 
   .from-\[\#0D1017\] {
@@ -6840,8 +6840,8 @@ header nav ul li.current-page .nav-arrow-path {
 
 @font-face {
   font-family: next-sass;
-  src: url("https://ai-solutions-tailwind.pixels71.workers.dev/fonts/next-sass.eot?obdk3g");
-  src: url("https://ai-solutions-tailwind.pixels71.workers.dev/fonts/next-sass.eot?obdk3g#iefix") format("embedded-opentype"), url("https://ai-solutions-tailwind.pixels71.workers.dev/fonts/next-sass.ttf?obdk3g") format("truetype"), url("https://ai-solutions-tailwind.pixels71.workers.dev/fonts/next-sass.woff?obdk3g") format("woff"), url("https://ai-solutions-tailwind.pixels71.workers.dev/fonts/next-sass.svg?obdk3g#next-sass") format("svg");
+  src: url("../fonts/next-sass8d53.eot?obdk3g");
+  src: url("../fonts/next-sass8d53.eot?obdk3g#iefix") format("embedded-opentype"), url("../fonts/next-sass8d53.ttf?obdk3g") format("truetype"), url("../fonts/next-sass8d53.woff?obdk3g") format("woff"), url("../fonts/next-sass8d53.svg?obdk3g#next-sass") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;

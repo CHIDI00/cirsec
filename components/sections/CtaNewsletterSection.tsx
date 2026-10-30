@@ -17,7 +17,7 @@ export function CtaNewsletterSection() {
             </SplitReveal>
           </h2>
           <p className="text-tagline-2 font-inter-tight text-white/60 max-w-[500px] mx-auto">
-            <SplitReveal delay={0.2}>
+            <SplitReveal as="span" delay={0.2}>
               Subscribe to our monthly brief for practical security guides, emerging threat
               advisories, and cyber community updates.
             </SplitReveal>

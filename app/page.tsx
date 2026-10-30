@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/sections/HeroSection";
+import { PartnersSection } from "@/components/sections/PartnersSection";
 import { ImpactSection } from "@/components/sections/ImpactSection";
 import { EmpoweringSection } from "@/components/sections/EmpoweringSection";
 import { IndustriesSection } from "@/components/sections/IndustriesSection";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full overflow-hidden">
       <HeroSection />
+      <PartnersSection />
       <ImpactSection />
       <EmpoweringSection />
       <IndustriesSection />

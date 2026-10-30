@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { CurrentYear, ExpandLine } from "@/components/ui/FooterBits";
+import { CurrentYear, ExpandLine, EncryptedFooterTitle } from "@/components/ui/FooterBits";
 import { Logo } from "@/components/ui/Logo";
 import { PlaceholderForm } from "@/components/ui/PlaceholderForm";
 import { Reveal } from "@/components/ui/Reveal";
@@ -175,12 +175,10 @@ export function Footer() {
         </div>
 
         <Reveal delay={0.1} className="py-12 lg:py-16">
-          <p
-            aria-hidden="true"
+          <EncryptedFooterTitle
+            text="CIRSEC"
             className="text-it-heading-4 font-inter-tight footer-title text-center font-bold tracking-[22.48px] text-nowrap sm:text-[60px] sm:leading-[120px] sm:tracking-[27.48px] md:tracking-[45.48px] lg:pl-5 lg:text-[80px] lg:tracking-[64.48px] xl:pl-10 xl:text-[112px] xl:leading-[168px] 2xl:tracking-[75.48px]"
-          >
-            CIRSEC
-          </p>
+          />
         </Reveal>
 
         <Reveal

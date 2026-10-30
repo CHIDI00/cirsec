@@ -36,7 +36,7 @@ export function ImpactSection() {
             <div className="col-span-12 md:col-span-6 lg:col-span-4">
               <Reveal
                 delay={0.2}
-                className="border-stroke-3/18 relative h-[420px] max-w-[409px] rounded-lg border bg-white px-10.5 pt-[27px] pb-10.5 max-md:mx-auto lg:px-5 xl:px-10.5 shadow-sm"
+                className="border-stroke-3/18 relative h-[420px] max-w-[409px] rounded-lg border bg-white px-10.5 pt-[27px] pb-10.5 max-md:mx-auto lg:px-5 xl:px-10.5"
               >
                 {/* Image Stack */}
                 <div className="relative h-[294px] w-full max-w-[324px]">
@@ -115,7 +115,7 @@ export function ImpactSection() {
             <div className="col-span-12 md:col-span-6 lg:col-span-4">
               <Reveal
                 delay={0.3}
-                className="border-stroke-3/18 relative h-[420px] w-full max-w-[409px] overflow-hidden rounded-lg border bg-white px-10.5 pt-[57px] pb-10.5 max-md:mx-auto shadow-sm"
+                className="border-stroke-3/18 relative h-[420px] w-full max-w-[409px] overflow-hidden rounded-lg border bg-white px-10.5 pt-[57px] pb-10.5 max-md:mx-auto"
               >
                 {/* Floating Testimonial Mini-cards */}
                 <div className="relative md:-left-1 lg:-left-5 xl:left-4" aria-hidden="true">
@@ -186,7 +186,7 @@ export function ImpactSection() {
             <div className="col-span-12 md:col-span-6 md:col-start-4 lg:col-span-4 lg:col-start-auto">
               <Reveal
                 delay={0.4}
-                className="border-stroke-3/18 relative h-[420px] w-full max-w-[409px] rounded-lg border bg-white p-4 max-md:mx-auto shadow-sm"
+                className="border-stroke-3/18 relative h-[420px] w-full max-w-[409px] rounded-lg border bg-white p-4 max-md:mx-auto"
               >
                 <div
                   className="pointer-events-none absolute bottom-0 left-0 z-20 h-[334px] w-full bg-gradient-to-b from-transparent from-[10%] to-white to-[99%]"

@@ -1,8 +1,5 @@
-import { SplitReveal } from "@/components/ui/SplitReveal";
-import { Reveal } from "@/components/ui/Reveal";
 import { Accordion } from "@/components/ui/Accordion";
 import { PlaceholderForm } from "@/components/ui/PlaceholderForm";
-import { Button } from "@/components/ui/Button";
 
 interface FaqItem {
   id: string;
@@ -47,12 +44,6 @@ const faqList: FaqItem[] = [
     answer:
       "You can submit a request using our contact form below or reach out to partnerships@cirsec.org. We will discuss your team size, objectives, and schedule an interactive workshop tailored to your needs.",
   },
-  {
-    id: "faq-7",
-    question: "How do I receive regular threat intelligence bulletins?",
-    answer:
-      "Subscribe to our newsletter below or connect with our social channels. We regularly publish threat alerts, security advisories, and actionable safety checklists.",
-  },
 ];
 
 export function FaqSection() {
@@ -64,24 +55,21 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="bg-background-6 py-12 md:py-24 lg:py-32 xl:py-36 border-t border-white/5"
+      className="bg-background-2 py-14 md:py-20 lg:py-28 border-t border-stroke-1 transition-colors duration-300"
       aria-labelledby="faq-heading"
     >
       <div className="main-container space-y-12 md:space-y-16">
         {/* Header */}
-        <div className="space-y-2 text-center md:space-y-3">
+        <div className="space-y-3 text-center">
+          <span className="badge badge-green">FAQ</span>
           <h2
             id="faq-heading"
-            className="font-sora md:text-sora-heading-3 text-sora-heading-4 lg:text-sora-heading-2 font-normal text-white/95"
+            className="text-secondary font-normal tracking-tight text-heading-4 sm:text-heading-2"
           >
-            <SplitReveal>
-              Your questions, <span className="text-white/40">answered</span>
-            </SplitReveal>
+            Your questions, answered
           </h2>
-          <p className="font-inter-tight text-tagline-2 text-white/60 max-w-[480px] mx-auto">
-            <SplitReveal delay={0.2}>
-              Common inquiries about our cybersecurity initiatives, community workshops, and practical defense models.
-            </SplitReveal>
+          <p className="text-secondary/70 text-tagline-1 max-w-[500px] mx-auto leading-relaxed">
+            Common inquiries about our cybersecurity initiatives, community workshops, and practical defense models.
           </p>
         </div>
 
@@ -94,19 +82,13 @@ export function FaqSection() {
 
           {/* Right: Quick Question Form */}
           <div className="lg:col-span-5">
-            <Reveal
-              delay={0.2}
-              className="bg-background-5/70 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl relative overflow-hidden"
-            >
-              {/* Radial glow background */}
-              <div className="pointer-events-none absolute -top-20 -right-20 size-60 rounded-full bg-brand/20 blur-[50px]" />
-
+            <div className="bg-white border border-stroke-1 rounded-2xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
               <div className="relative z-10 space-y-6">
-                <div className="space-y-1">
-                  <h3 className="font-sora text-sora-heading-5 font-normal text-white/95">
+                <div className="space-y-1.5">
+                  <h3 className="text-heading-5 font-normal text-secondary">
                     Have another question?
                   </h3>
-                  <p className="font-inter-tight text-tagline-3 text-white/50">
+                  <p className="text-tagline-2 text-secondary/60">
                     Send our security team a direct note and we will reply promptly.
                   </p>
                 </div>
@@ -124,7 +106,7 @@ export function FaqSection() {
                       type="text"
                       required
                       placeholder="Your name"
-                      className="text-tagline-2 font-inter-tight bg-background-6/80 border border-white/10 min-h-12 w-full rounded-lg px-4 font-normal text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors"
+                      className="w-full rounded-xl border border-stroke-1 bg-background-2 px-4 py-3 text-tagline-2 text-secondary placeholder:text-secondary/40 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
                     />
                   </div>
 
@@ -135,40 +117,32 @@ export function FaqSection() {
                       name="email"
                       type="email"
                       required
-                      placeholder="Your email address"
-                      className="text-tagline-2 font-inter-tight bg-background-6/80 border border-white/10 min-h-12 w-full rounded-lg px-4 font-normal text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors"
+                      placeholder="your.email@example.com"
+                      className="w-full rounded-xl border border-stroke-1 bg-background-2 px-4 py-3 text-tagline-2 text-secondary placeholder:text-secondary/40 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="faq-subject" className="sr-only">Subject</label>
-                    <input
-                      id="faq-subject"
-                      name="subject"
-                      type="text"
-                      placeholder="Subject (e.g. Workshop inquiry)"
-                      className="text-tagline-2 font-inter-tight bg-background-6/80 border border-white/10 min-h-12 w-full rounded-lg px-4 font-normal text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="faq-message" className="sr-only">Your Questions</label>
+                    <label htmlFor="faq-message" className="sr-only">Your Question</label>
                     <textarea
                       id="faq-message"
                       name="message"
-                      required
                       rows={4}
-                      placeholder="What would you like to ask?"
-                      className="text-tagline-2 font-inter-tight bg-background-6/80 border border-white/10 w-full rounded-lg p-4 font-normal text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors resize-none"
+                      required
+                      placeholder="What would you like to know?"
+                      className="w-full rounded-xl border border-stroke-1 bg-background-2 px-4 py-3 text-tagline-2 text-secondary placeholder:text-secondary/40 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors resize-none"
                     />
                   </div>
 
-                  <Button type="submit" variant="light" size="md" className="w-full">
-                    Submit Question
-                  </Button>
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-md w-full"
+                  >
+                    <span>Send Question</span>
+                  </button>
                 </PlaceholderForm>
               </div>
-            </Reveal>
+            </div>
           </div>
         </div>
       </div>

@@ -1,108 +1,117 @@
-import { SplitReveal } from "@/components/ui/SplitReveal";
-import { StarRating } from "@/components/ui/StarRating";
+import Image from "next/image";
 
 interface Testimonial {
   quote: string;
   author: string;
   role: string;
-  organisation: string;
+  organization: string;
+  avatar: string;
+  rating: string;
 }
 
 const testimonials: Testimonial[] = [
   {
-    quote:
-      "Cirsec fundamentally transformed how our staff thinks about digital threat vectors. The practical drills and phishing simulations replaced fear with proactive awareness.",
-    author: "Dr. Marcus Vance",
-    role: "Chief Information Security Officer",
-    organisation: "Apex Global Financial",
+    quote: "The platform's intuitive workflows and practical threat drills revolutionized our team's operational readiness. Incident response times dropped dramatically.",
+    author: "Sarah Johnson",
+    role: "Director of Operations",
+    organization: "TechSphere",
+    avatar: "/images/ns-avatar-1.png",
+    rating: "4.9",
   },
   {
-    quote:
-      "The hands-on cyber clinic was eye-opening. We uncovered critical cloud exposure blind spots and implemented zero-trust access controls before our product launch.",
-    author: "Maya Chen",
-    role: "VP of Engineering",
-    organisation: "Helios Health Tech",
+    quote: "Outstanding service and innovative solutions. The responsiveness and hands-on exercises conducted by Cirsec have been invaluable to our cloud infrastructure.",
+    author: "Michael Chen",
+    role: "Tech Lead",
+    organization: "Nexis Financial",
+    avatar: "/images/ns-avatar-2.png",
+    rating: "5.0",
   },
   {
-    quote:
-      "From day one, Cirsec felt like a true mission partner. Their educational workshops made complex ISO and NIST compliance principles clear and achievable for our entire engineering group.",
-    author: "Derek Singh",
-    role: "Head of Infrastructure",
-    organisation: "Logix Supply Networks",
+    quote: "Cirsec's vulnerability assessments gave our executive board genuine confidence. The practical drills proved far superior to standard compliance checkboxes.",
+    author: "Amara Okafor",
+    role: "Information Security Officer",
+    organization: "Vantage Health",
+    avatar: "/images/ns-avatar-3.png",
+    rating: "4.8",
   },
   {
-    quote:
-      "Our school district needed a digital safety initiative that teachers and young adults could actually relate to. Cirsec delivered workshops that inspired real behavior changes.",
-    author: "Laura Fernandez",
-    role: "Technology Director",
-    organisation: "Civic Education Alliance",
-  },
-  {
-    quote:
-      "What impressed us most was their practical, zero-jargon philosophy. Cirsec tailored security habits to our unique workflow rather than imposing rigid, friction-heavy rules.",
-    author: "Jonas Müller",
-    role: "Risk & Compliance Lead",
-    organisation: "Vector Dynamics",
+    quote: "A breath of fresh air in the cybersecurity space. Cirsec translates complex security protocols into actionable daily habits for emerging developers.",
+    author: "David Patel",
+    role: "Director of Engineering",
+    organization: "Vertex Systems",
+    avatar: "/images/ns-avatar-4.png",
+    rating: "5.0",
   },
 ];
 
 export function TestimonialsSection() {
-  // Duplicate for seamless infinite marquee loop
-  const marqueeItems = [...testimonials, ...testimonials];
-
   return (
-    <section
-      id="testimonials"
-      className="bg-background-6 py-12 md:py-24 lg:py-32 xl:py-36 overflow-hidden border-t border-white/5"
-    >
-      <div className="main-container mb-10 md:mb-14 lg:mb-16">
-        <div className="space-y-3 text-center">
-          <h2 className="font-sora md:text-sora-heading-3 text-sora-heading-4 lg:text-sora-heading-2 mx-auto max-w-[700px] font-normal max-md:leading-[110%] text-white/95">
-            <SplitReveal>
-              What our <span className="text-white/40">partners & community are saying.</span>
-            </SplitReveal>
+    <section id="testimonials" className="pt-14 md:pt-16 lg:pt-[88px] xl:pt-[100px] pb-14 md:pb-16 lg:pb-[88px] xl:pb-[100px] bg-white transition-colors duration-300">
+      <div className="space-y-4 main-container text-center mb-10 md:mb-[70px]">
+        <span className="badge badge-green">Reviews</span>
+        <div>
+          <h2 className="max-w-[786px] mx-auto text-secondary font-normal tracking-tight text-heading-4 sm:text-heading-2">
+            Hear from our customers about their experiences with us
           </h2>
-          <p className="font-inter-tight text-tagline-2 text-white/60 mx-auto max-w-[420px]">
-            <SplitReveal delay={0.2}>
-              Real feedback from security leaders, engineers, and organizations building safer digital habits.
-            </SplitReveal>
-          </p>
         </div>
       </div>
 
-      {/* Marquee Carousel */}
-      <div className="relative w-full overflow-hidden mask-gradient-x">
-        {/* Left and right fade gradients */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-24 bg-gradient-to-r from-background-6 to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-24 bg-gradient-to-l from-background-6 to-transparent" />
-
-        <div className="animate-marquee flex gap-6 px-4 py-4">
-          {marqueeItems.map((item, index) => (
-            <article
-              key={`${item.author}-${index}`}
-              className="bg-background-5/70 border-stroke-1/11 relative flex min-h-[300px] w-[320px] md:w-[380px] shrink-0 flex-col justify-between rounded-xl border p-6 md:p-8 backdrop-blur-md shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:border-brand-cyan/40"
+      {/* Marquee / Scrollable Grid Container */}
+      <div className="w-full overflow-x-auto pb-6 scrollbar-thin">
+        <div className="flex items-center justify-start lg:justify-center py-4 gap-6 min-w-max px-6">
+          {testimonials.map((item, idx) => (
+            <div
+              key={idx}
+              className="relative w-[320px] sm:w-[358px] min-w-[320px] sm:min-w-[358px] h-[270px] group [perspective:1000px]"
             >
-              <div className="space-y-4">
-                <StarRating rating={5} />
-                <p className="font-inter-tight text-tagline-2 text-white/80 italic leading-relaxed">
-                  &ldquo;{item.quote}&rdquo;
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-white/10 flex items-center gap-3">
-                <div className="size-10 rounded-full bg-gradient-to-br from-brand to-brand-cyan flex items-center justify-center font-bold text-white text-sm shadow-md">
-                  {item.author.charAt(0)}
+              <div className="flipper w-full h-full relative [transform-style:preserve-3d] transition-transform duration-700">
+                {/* Front of Card */}
+                <div className="front rounded-[20px] space-y-6 w-full absolute inset-0 p-7 bg-background-2 border border-stroke-1 flex flex-col justify-between shadow-sm [backface-visibility:hidden]">
+                  <p className="text-secondary text-tagline-2 leading-relaxed">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+                  <div>
+                    <div className="border-t border-stroke-4 mb-4" />
+                    <figure className="flex items-center gap-3">
+                      <Image
+                        src={item.avatar}
+                        className="size-11 rounded-full object-center object-cover ring-2 ring-primary-500/20"
+                        alt={`${item.author}'s avatar`}
+                        width={44}
+                        height={44}
+                      />
+                      <figcaption className="text-left">
+                        <h4 className="text-tagline-1 font-medium text-secondary">
+                          {item.author}
+                        </h4>
+                        <p className="text-tagline-3 text-secondary/60">
+                          {item.role} &bull; {item.organization}
+                        </p>
+                      </figcaption>
+                    </figure>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-sora text-sm font-medium text-white/95">
-                    {item.author}
+
+                {/* Back of Card (Flipped on Hover) */}
+                <div className="back rounded-[20px] p-8 flex flex-col justify-center items-center space-y-3 w-full h-full absolute inset-0 bg-secondary shadow-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <h3 className="text-[64px] font-light leading-none text-ns-green">
+                    {item.rating}
                   </h3>
-                  <p className="font-inter-tight text-xs text-white/50">
-                    {item.role} · {item.organisation}
+                  <figure className="w-24 h-10 relative">
+                    <Image
+                      src="/images/icons/trustpilot-logo.svg"
+                      alt="Trustpilot logo"
+                      width={96}
+                      height={40}
+                      className="w-full h-full object-contain"
+                    />
+                  </figure>
+                  <p className="text-white/60 text-tagline-3">
+                    Hover card to return
                   </p>
                 </div>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>

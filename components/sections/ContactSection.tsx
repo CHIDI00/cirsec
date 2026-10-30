@@ -1,195 +1,162 @@
-import { SplitReveal } from "@/components/ui/SplitReveal";
-import { Reveal } from "@/components/ui/Reveal";
 import { PlaceholderForm } from "@/components/ui/PlaceholderForm";
-import { Button } from "@/components/ui/Button";
 
 export function ContactSection() {
   return (
     <section
       id="contact"
-      className="bg-background-6 relative overflow-hidden py-12 pb-20 md:py-24 lg:py-32 border-t border-white/5"
+      className="bg-white relative overflow-hidden py-14 pb-24 md:py-20 lg:py-28 border-t border-stroke-1 transition-colors duration-300"
       aria-labelledby="contact-heading"
     >
-      <div className="main-container relative z-20 space-y-10 md:space-y-16">
+      <div className="main-container relative z-20 space-y-10 md:space-y-14">
         {/* Header */}
-        <div className="space-y-2 text-center md:space-y-3">
+        <div className="space-y-3 text-center">
+          <span className="badge badge-green">Contact</span>
           <h2
             id="contact-heading"
-            className="font-sora md:text-sora-heading-3 text-sora-heading-4 lg:text-sora-heading-2 font-normal text-white/95"
+            className="text-secondary font-normal tracking-tight text-heading-4 sm:text-heading-2"
           >
-            <SplitReveal>
-              Let&rsquo;s <span className="text-white/40">connect</span>
-            </SplitReveal>
+            Let&rsquo;s connect
           </h2>
-          <p className="text-tagline-2 font-inter-tight text-white/60 max-w-[500px] mx-auto">
-            <SplitReveal delay={0.2}>
-              Ready to elevate your organization&rsquo;s cyber awareness or collaborate on a digital safety initiative? Reach out to our team.
-            </SplitReveal>
+          <p className="text-tagline-1 text-secondary/70 max-w-[500px] mx-auto leading-relaxed">
+            Ready to elevate your organization&rsquo;s cyber awareness or collaborate on a digital safety initiative? Reach out to our team.
           </p>
         </div>
 
         {/* Outer Card Container */}
-        <div className="bg-background-6/90 border border-white/10 mx-auto flex max-w-[1240px] flex-col gap-10 rounded-2xl p-6 sm:p-10 lg:flex-row lg:p-12 shadow-2xl relative">
-          {/* Subtle glow */}
-          <div className="pointer-events-none absolute -bottom-10 -left-10 size-72 rounded-full bg-brand-blue/15 blur-[80px]" />
-
+        <div className="bg-background-2 border border-stroke-1 mx-auto flex max-w-[1200px] flex-col gap-10 rounded-3xl p-6 sm:p-10 lg:flex-row lg:p-12 shadow-sm relative">
           {/* Left Column: Direct Contact Info Cards */}
-          <div className="flex w-full flex-col gap-5 lg:w-[460px] shrink-0">
+          <div className="flex w-full flex-col gap-4 lg:w-[420px] shrink-0">
             {/* Email */}
-            <Reveal
-              delay={0.1}
-              direction="left"
-              className="bg-background-5/70 border border-white/5 flex items-start gap-5 rounded-xl p-6 sm:p-7 transition-all duration-300 hover:border-brand-cyan/40 hover:bg-background-5"
-            >
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand/20 text-brand-cyan border border-brand-cyan/20">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <div className="bg-white border border-stroke-1 flex items-start gap-4 rounded-2xl p-6 shadow-sm">
+              <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600 border border-primary-100">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="M22 6L12 13L2 6" />
                 </svg>
               </div>
               <div className="space-y-1">
-                <h3 className="font-sora text-sm font-medium text-white/90">Email Us</h3>
+                <h3 className="text-tagline-1 font-medium text-secondary">Email Us</h3>
                 <a
                   href="mailto:info@cirsec.org"
-                  className="font-inter-tight text-tagline-2 text-white/60 hover:text-brand-cyan transition-colors"
+                  className="text-tagline-2 text-primary-600 hover:underline block"
                 >
                   info@cirsec.org
                 </a>
-                <p className="text-xs text-white/40 font-inter-tight">General inquiries & partnerships</p>
+                <p className="text-tagline-3 text-secondary/60">General inquiries &amp; partnerships</p>
               </div>
-            </Reveal>
+            </div>
 
-            {/* Helpline / Phone */}
-            <Reveal
-              delay={0.2}
-              direction="left"
-              className="bg-background-5/70 border border-white/5 flex items-start gap-5 rounded-xl p-6 sm:p-7 transition-all duration-300 hover:border-brand-cyan/40 hover:bg-background-5"
-            >
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand/20 text-brand-cyan border border-brand-cyan/20">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4741 21.8325 20.7294C21.7209 20.9846 21.5573 21.2137 21.3521 21.4019C21.1468 21.5902 20.9046 21.7335 20.6407 21.8228C20.3769 21.912 20.0974 21.9452 19.82 21.92C16.7428 21.5856 13.787 20.5342 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.19 12.85C3.49997 10.2412 2.44824 7.27099 2.12 4.18C2.09501 3.90348 2.12787 3.62486 2.2165 3.36173C2.30513 3.0986 2.44754 2.85686 2.63463 2.65201C2.82173 2.44716 3.04938 2.28383 3.30303 2.17253C3.55668 2.06123 3.83063 2.00446 4.107 2.005H7.107C7.5953 1.99522 8.06798 2.16708 8.43576 2.48833C8.80353 2.80958 9.03965 3.25686 9.1 3.745C9.21208 4.65487 9.43444 5.54756 9.763 6.405C9.90774 6.77665 9.93888 7.18244 9.85287 7.57147C9.76686 7.96051 9.56738 8.31557 9.278 8.592L8.007 9.863C9.43577 12.3736 11.5264 14.4642 14.037 15.893L15.308 14.622C15.5844 14.3326 15.9395 14.1331 16.3285 14.0471C16.7176 13.9611 17.1234 13.9923 17.495 14.137C18.3524 14.4656 19.2451 14.6879 20.155 14.8C20.6483 14.8609 21.0998 15.1013 21.4225 15.4744C21.7452 15.8475 21.9149 16.3262 21.9 16.82L22 16.92Z" />
+            {/* Helpline / Advisory */}
+            <div className="bg-white border border-stroke-1 flex items-start gap-4 rounded-2xl p-6 shadow-sm">
+              <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600 border border-primary-100">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
               </div>
               <div className="space-y-1">
-                <h3 className="font-sora text-sm font-medium text-white/90">Direct Contact</h3>
-                <p className="font-inter-tight text-tagline-2 text-white/60">
-                  +1 (555) 329-8740
-                </p>
-                <p className="text-xs text-white/40 font-inter-tight">Mon - Fri, 9:00 AM - 6:00 PM</p>
+                <h3 className="text-tagline-1 font-medium text-secondary">Consultation Helpline</h3>
+                <p className="text-tagline-2 text-secondary font-mono">+1 (800) CIR-SEC1</p>
+                <p className="text-tagline-3 text-secondary/60">Monday &ndash; Friday, 9am &ndash; 6pm</p>
               </div>
-            </Reveal>
+            </div>
 
-            {/* Location */}
-            <Reveal
-              delay={0.3}
-              direction="left"
-              className="bg-background-5/70 border border-white/5 flex items-start gap-5 rounded-xl p-6 sm:p-7 transition-all duration-300 hover:border-brand-cyan/40 hover:bg-background-5"
-            >
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand/20 text-brand-cyan border border-brand-cyan/20">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" />
-                  <circle cx="12" cy="9" r="3" />
+            {/* Office / Community HQ */}
+            <div className="bg-white border border-stroke-1 flex items-start gap-4 rounded-2xl p-6 shadow-sm">
+              <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600 border border-primary-100">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
               <div className="space-y-1">
-                <h3 className="font-sora text-sm font-medium text-white/90">Engagements</h3>
-                <p className="font-inter-tight text-tagline-2 text-white/60">
-                  Lagos, Nigeria &amp; Global Hybrid Clinics
-                </p>
-                <p className="text-xs text-white/40 font-inter-tight">Remote workshops &amp; on-site sessions</p>
+                <h3 className="text-tagline-1 font-medium text-secondary">Initiative Hub</h3>
+                <p className="text-tagline-2 text-secondary/80">Cybersecurity &amp; Technology Initiative</p>
+                <p className="text-tagline-3 text-secondary/60">Global Virtual &amp; Regional Clinics</p>
               </div>
-            </Reveal>
+            </div>
           </div>
 
-          {/* Right Column: Full Inquiry Form */}
-          <div className="flex-1">
-            <PlaceholderForm
-              actionName="Contact Message"
-              successMessage="Message received! A member of the Cirsec team will contact you within 24 hours."
-              className="flex flex-col gap-5"
-            >
-              {/* Full Name */}
-              <div>
-                <label htmlFor="full-name" className="sr-only">Full name</label>
-                <input
-                  type="text"
-                  id="full-name"
-                  name="fullName"
-                  required
-                  placeholder="Full name"
-                  className="font-inter-tight text-tagline-2 w-full bg-background-5/80 border border-white/10 rounded-lg px-4 py-3 text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors"
-                />
+          {/* Right Column: Contact Form */}
+          <div className="bg-white border border-stroke-1 flex-1 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div className="space-y-6">
+              <div className="space-y-1">
+                <h3 className="text-heading-5 font-normal text-secondary">
+                  Send us a message
+                </h3>
+                <p className="text-tagline-2 text-secondary/60">
+                  Fill in the details below and an advisory specialist will reach out within 24 hours.
+                </p>
               </div>
 
-              {/* Email Address */}
-              <div>
-                <label htmlFor="email-address" className="sr-only">Email address</label>
-                <input
-                  type="email"
-                  id="email-address"
-                  name="email"
-                  required
-                  placeholder="Email address"
-                  className="font-inter-tight text-tagline-2 w-full bg-background-5/80 border border-white/10 rounded-lg px-4 py-3 text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors"
-                />
-              </div>
+              <PlaceholderForm
+                actionName="Contact Form"
+                successMessage="Message received! We will get in touch shortly."
+                className="space-y-4"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="contact-name" className="text-tagline-3 text-secondary font-medium mb-1.5 block">
+                      Full Name *
+                    </label>
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="Jane Doe"
+                      className="w-full rounded-xl border border-stroke-1 bg-background-2 px-4 py-3 text-tagline-2 text-secondary placeholder:text-secondary/40 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="text-tagline-3 text-secondary font-medium mb-1.5 block">
+                      Email Address *
+                    </label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="jane@organization.com"
+                      className="w-full rounded-xl border border-stroke-1 bg-background-2 px-4 py-3 text-tagline-2 text-secondary placeholder:text-secondary/40 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
+                    />
+                  </div>
+                </div>
 
-              {/* Company & Phone Row */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="company-name" className="sr-only">Organization or Company</label>
+                  <label htmlFor="contact-org" className="text-tagline-3 text-secondary font-medium mb-1.5 block">
+                    Organization / Company
+                  </label>
                   <input
+                    id="contact-org"
+                    name="organization"
                     type="text"
-                    id="company-name"
-                    name="company"
-                    placeholder="Organization name"
-                    className="font-inter-tight text-tagline-2 w-full bg-background-5/80 border border-white/10 rounded-lg px-4 py-3 text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors"
+                    placeholder="Acme Inc. / School District"
+                    className="w-full rounded-xl border border-stroke-1 bg-background-2 px-4 py-3 text-tagline-2 text-secondary placeholder:text-secondary/40 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
                   />
                 </div>
+
                 <div>
-                  <label htmlFor="phone" className="sr-only">Phone number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="Phone number"
-                    className="font-inter-tight text-tagline-2 w-full bg-background-5/80 border border-white/10 rounded-lg px-4 py-3 text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors"
+                  <label htmlFor="contact-message" className="text-tagline-3 text-secondary font-medium mb-1.5 block">
+                    How can we help? *
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={4}
+                    required
+                    placeholder="Tell us about your team size, security objectives, or engagement interest..."
+                    className="w-full rounded-xl border border-stroke-1 bg-background-2 px-4 py-3 text-tagline-2 text-secondary placeholder:text-secondary/40 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors resize-none"
                   />
                 </div>
-              </div>
 
-              {/* Subject */}
-              <div>
-                <label htmlFor="subject" className="sr-only">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  placeholder="Subject (e.g. Workshop inquiry, Vulnerability assessment)"
-                  className="font-inter-tight text-tagline-2 w-full bg-background-5/80 border border-white/10 rounded-lg px-4 py-3 text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="sr-only">Your message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  placeholder="Describe your requirements or how we can assist..."
-                  className="font-inter-tight text-tagline-2 w-full bg-background-5/80 border border-white/10 rounded-lg p-4 text-white/90 placeholder:text-white/40 focus:border-brand-cyan/60 focus:outline-none transition-colors resize-none"
-                />
-              </div>
-
-              {/* Submit */}
-              <div className="flex justify-end pt-2">
-                <Button type="submit" variant="light" size="lg" className="w-full sm:w-auto">
-                  Submit message
-                </Button>
-              </div>
-            </PlaceholderForm>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-xl w-full sm:w-auto shadow-md"
+                >
+                  <span>Submit Consultation Request</span>
+                </button>
+              </PlaceholderForm>
+            </div>
           </div>
         </div>
       </div>

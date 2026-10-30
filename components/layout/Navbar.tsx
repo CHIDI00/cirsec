@@ -13,18 +13,8 @@ import featuredImage from "@/assets/images/opai-img-22.jpg";
 
 type MenuEntry = Extract<NavEntry, { menu: string }>;
 
-/** The thin highlight line + soft glow shown above a nav item on hover. */
-function HoverGlow() {
-  return (
-    <div className="pointer-events-none absolute inset-0">
-      <div className="nav-item-line absolute top-0 left-1/2 h-[0.9px] w-0 -translate-x-1/2 rounded-full bg-radial-[circle,#FFFFFF_0%,#7C8EA52E_100%] transition-all duration-500 ease-out group-hover/nav-item:w-42" />
-      <div className="absolute top-0 left-1/2 h-[89%] w-[calc(100%+120px)] -translate-x-1/2 bg-radial-[circle_at_center] from-[#00D1FE55] from-40% to-[#00D1FE00] to-100% opacity-0 blur-[14px] transition-all duration-500 ease-out group-hover/nav-item:opacity-80" />
-    </div>
-  );
-}
-
 const navTextClass =
-  "font-ibm-plex-mono text-tagline-3 leading-[21.7px] font-normal capitalize transition-colors duration-500 group-hover/nav-item:text-white";
+  "font-inter-tight text-tagline-2 font-normal capitalize transition-colors duration-200";
 
 function ItemRow({ item, onNavigate }: { item: MenuEntry["items"][number]; onNavigate: () => void }) {
   return (
@@ -32,18 +22,19 @@ function ItemRow({ item, onNavigate }: { item: MenuEntry["items"][number]; onNav
       <Link
         href={item.href}
         onClick={onNavigate}
-        className="group relative flex items-start gap-3 rounded-[10px] p-3 transition-all duration-300"
+        className="group relative flex items-start gap-3 rounded-[12px] p-2.5 transition-all duration-200 hover:bg-background-2"
       >
-        <div className="group-hover:bg-background-3 absolute top-1/2 left-1/2 z-0 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-xl opacity-0 transition-all duration-400 group-hover:opacity-100" />
         {item.icon && (
-          <span className="text-brand-cyan relative z-10 mt-1">
-            <Icon name={item.icon} size={20} />
+          <span className="text-primary-500 relative z-10 mt-1 shrink-0 p-1.5 rounded-lg bg-background-2 border border-stroke-1 group-hover:border-primary-500/30">
+            <Icon name={item.icon} size={18} />
           </span>
         )}
         <span className="relative z-10 block space-y-0.5">
-          <span className="text-tagline-2 font-sora text-background-7 block font-normal">{item.title}</span>
+          <span className="text-tagline-2 font-medium text-secondary block">
+            {item.title}
+          </span>
           {item.description && (
-            <span className="text-tagline-4 font-inter-tight text-background-7/70 block font-normal">
+            <span className="text-tagline-4 text-secondary/60 block font-normal">
               {item.description}
             </span>
           )}
@@ -58,7 +49,6 @@ export function Navbar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileSection, setMobileSection] = useState<string | null>("company-menu");
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const cancelHide = useCallback(() => {
@@ -82,15 +72,13 @@ export function Navbar() {
     setMobileOpen(false);
   }, [cancelHide]);
 
-  // Header tightens to the top edge once the page has scrolled.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 100);
+    const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock page scroll while the mobile menu is open; Escape closes menus.
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", mobileOpen);
     return () => document.body.classList.remove("overflow-hidden");
@@ -108,30 +96,33 @@ export function Navbar() {
     "items" in entry ? entry.items.some((i) => pathname === i.href) : pathname === entry.href;
 
   return (
-    <header>
-      <Reveal
-        as="nav"
+    <header className="relative z-50">
+      <nav
         aria-label="Primary"
-        instant
-        delay={0.8}
-        direction="up"
-        className={`bg-background-6 border-stroke-3/18 fixed top-6 left-1/2 z-30 mx-auto flex w-full max-w-[350px] -translate-x-1/2 items-center justify-between rounded-full border py-1.5 pr-5 pl-2 transition-[top] duration-500 ease-in-out md:max-w-[640px] lg:max-w-[818px] lg:gap-12 lg:py-0 lg:pr-1.5 lg:pl-1.5 ${scrolled ? "scroll-header" : ""}`}
+        className={`fixed top-4 left-1/2 z-50 mx-auto flex w-[92%] max-w-[350px] -translate-x-1/2 items-center justify-between rounded-full border border-stroke-1 bg-white/90 backdrop-blur-[15px] px-4 py-2.5 shadow-[0px_4px_24px_rgba(0,0,0,0.06)] transition-all duration-300 sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] xl:py-1.5 ${
+          scrolled ? "top-2 shadow-md bg-white/95" : ""
+        }`}
       >
-        <Logo className="size-11" priority />
+        {/* Cirsec Logo */}
+        <div className="flex items-center gap-3">
+          <Logo variant="full" className="h-8 md:h-9 w-auto" theme="dark-text" priority />
+        </div>
 
-        <ul className="relative hidden items-center gap-6 lg:flex lg:gap-8">
+        {/* Desktop Nav Items */}
+        <ul className="relative hidden items-center gap-2 lg:flex xl:gap-3">
           {navigation.map((entry) => {
             const current = isCurrent(entry);
-            const textColor = current ? "text-white" : "text-white/60";
+            const textColor = current
+              ? "text-secondary font-medium"
+              : "text-secondary/70 hover:text-secondary";
 
             if (!("items" in entry)) {
               return (
-                <li key={entry.label} className="group/nav-item relative py-4">
-                  <HoverGlow />
+                <li key={entry.label} className="relative py-2">
                   <Link
                     href={entry.href}
                     aria-current={current ? "page" : undefined}
-                    className="relative z-5 flex items-center gap-1.5"
+                    className="flex items-center px-3.5 py-1.5 rounded-full hover:bg-background-2 transition-colors duration-200"
                   >
                     <span className={`${navTextClass} ${textColor}`}>{entry.label}</span>
                   </Link>
@@ -144,160 +135,192 @@ export function Navbar() {
             return (
               <li
                 key={entry.label}
-                className={`nav-item group/nav-item relative py-4 ${isOpen ? "active" : ""}`}
+                className="relative py-2"
                 onMouseEnter={() => showMenu(entry.menu)}
                 onMouseLeave={scheduleHide}
               >
-                <HoverGlow />
                 <button
                   type="button"
                   aria-expanded={isOpen}
                   aria-haspopup="menu"
                   aria-controls={entry.menu}
                   onClick={() => (isOpen ? setActiveMenu(null) : showMenu(entry.menu))}
-                  className="relative z-5 flex cursor-pointer items-center gap-1.5"
+                  className="flex cursor-pointer items-center gap-1 px-3.5 py-1.5 rounded-full hover:bg-background-2 transition-colors duration-200"
                 >
                   <span className={`${navTextClass} ${textColor}`}>{entry.label}</span>
-                  <span className="nav-arrow block origin-center translate-y-px transition-all duration-500" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5" fill="none">
-                      <path
-                        d="M1.19922 0.5L5.19922 4.5L9.19922 0.5"
-                        className={`transition-colors duration-500 group-hover/nav-item:stroke-white ${current ? "stroke-white" : "stroke-white/60"}`}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`size-3 transition-transform duration-300 ${isOpen ? "rotate-180" : ""} ${current ? "stroke-secondary" : "stroke-secondary/70"}`}
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
                 </button>
 
-                <div
-                  className={`dropdown-menu-bridge absolute top-full left-1/2 z-40 h-10 w-full -translate-x-1/2 bg-transparent ${isCompany ? "min-w-[692px]" : "min-w-[280px]"}`}
-                  style={{ pointerEvents: isOpen ? "auto" : "none" }}
-                />
-                <div
-                  id={entry.menu}
-                  className={`dropdown-menu border-stroke-3/20 bg-background-14 absolute top-full left-1/2 z-50 mt-2 rounded-[20px] border p-4 ${isOpen ? "active" : ""} ${isCompany ? "flex w-[692px] items-start gap-x-8" : "w-[280px]"}`}
-                >
-                  <ul className={`space-y-2 ${isCompany ? "w-full max-w-[284px]" : "w-full"}`}>
-                    {entry.items.map((item) => (
-                      <ItemRow key={item.href + item.title} item={item} onNavigate={closeAll} />
-                    ))}
-                  </ul>
-                  {isCompany && (
-                    <div className="flex-1 space-y-3">
-                      <p className="text-tagline-4 font-sora text-background-7 font-medium">What&apos;s New</p>
-                      <Link href="/blog" onClick={closeAll} className="group relative block min-h-[272px] w-full overflow-hidden rounded-[14px]">
-                        <Image
-                          src={featuredImage}
-                          alt=""
-                          fill
-                          sizes="340px"
-                          className="rounded-[14px] object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
-                        />
-                        <div className="absolute top-4 left-4 size-full space-y-1 transition-all duration-500 ease-in-out group-hover:top-5 group-hover:left-5">
-                          <p className="text-tagline-3 font-sora text-background-7 font-medium">Cyber Safety Awareness</p>
-                          <p className="text-tagline-4 font-inter-tight w-full max-w-[212px] font-normal text-white/90">
-                            Practical guidance to help you stay safe in a connected world.
+                {/* Dropdown Menu */}
+                {isOpen && (
+                  <>
+                    <div
+                      className={`dropdown-menu-bridge absolute top-full left-1/2 z-40 h-3 w-full -translate-x-1/2 bg-transparent ${isCompany ? "min-w-[680px]" : "min-w-[280px]"}`}
+                    />
+                    <div
+                      id={entry.menu}
+                      className={`absolute top-full left-1/2 z-50 mt-1 rounded-[20px] border border-stroke-1 bg-white p-4 shadow-xl -translate-x-1/2 ${
+                        isCompany ? "flex w-[680px] items-start gap-x-6" : "w-[280px]"
+                      }`}
+                    >
+                      <ul className={`space-y-1.5 ${isCompany ? "w-full max-w-[290px]" : "w-full"}`}>
+                        {entry.items.map((item) => (
+                          <ItemRow key={item.href + item.title} item={item} onNavigate={closeAll} />
+                        ))}
+                      </ul>
+                      {isCompany && (
+                        <div className="flex-1 space-y-2 border-l border-stroke-1 pl-6">
+                          <p className="text-tagline-4 font-semibold text-secondary uppercase tracking-wider">
+                            Latest Initiative
                           </p>
+                          <Link
+                            href="#features"
+                            onClick={closeAll}
+                            className="group relative block min-h-[220px] w-full overflow-hidden rounded-[14px]"
+                          >
+                            <Image
+                              src={featuredImage}
+                              alt=""
+                              fill
+                              sizes="320px"
+                              className="rounded-[14px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent p-4 flex flex-col justify-end">
+                              <p className="text-tagline-3 font-semibold text-white">
+                                Cyber Safety Awareness
+                              </p>
+                              <p className="text-tagline-4 text-white/80 line-clamp-2">
+                                Practical guidance and interactive tools to safeguard your digital footprint.
+                              </p>
+                            </div>
+                          </Link>
                         </div>
-                      </Link>
+                      )}
                     </div>
-                  )}
-                </div>
+                  </>
+                )}
               </li>
             );
           })}
         </ul>
 
-        <div className="hidden lg:block">
-          <Button href="/contact" arrow={false} className="py-[11px]! shadow-[0_3px_18px_0_rgba(0,209,254,0.45)]">
-            Get started
-          </Button>
+        {/* CTA Button */}
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            href="#contact"
+            className="btn btn-secondary btn-md rounded-full shadow-sm text-tagline-2"
+          >
+            <span>Get started</span>
+          </Link>
         </div>
 
+        {/* Mobile Hamburger */}
         <button
           type="button"
           aria-label="Open menu"
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen(true)}
-          className="flex cursor-pointer flex-col items-end justify-center space-y-2 lg:hidden"
+          className="flex cursor-pointer flex-col items-end justify-center space-y-1.5 lg:hidden p-1.5"
         >
-          <span className="bg-background-7 block h-px w-9" />
-          <span className="bg-background-7 block h-px w-6" />
+          <span className="bg-secondary block h-0.5 w-6 rounded-full" />
+          <span className="bg-secondary block h-0.5 w-4 rounded-full" />
         </button>
-      </Reveal>
+      </nav>
 
-      {/* Mobile menu */}
-      <aside
-        inert={!mobileOpen}
-        aria-label="Mobile menu"
-        className={`border-stroke-3/18 bg-background-6 scroll-bar fixed top-0 right-0 z-[9999] h-screen w-full border-l transition-all duration-300 sm:w-1/2 lg:hidden ${mobileOpen ? "translate-x-0" : "translate-x-full"}`}
-      >
-        <div className="space-y-4 p-5 sm:p-8">
-          <div className="flex items-center justify-between">
-            <Logo className="size-11" />
+      {/* Mobile Drawer */}
+      {mobileOpen && (
+        <aside
+          aria-label="Mobile menu"
+          className="fixed inset-0 z-[9999] bg-white/95 backdrop-blur-lg flex flex-col p-6 overflow-y-auto"
+        >
+          <div className="flex items-center justify-between pb-6 border-b border-stroke-1">
+            <Logo variant="full" className="h-8 w-auto" theme="dark-text" />
             <button
               type="button"
               aria-label="Close menu"
               onClick={() => setMobileOpen(false)}
-              className="relative flex size-10 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-colors duration-200 hover:bg-white/20"
+              className="flex size-10 items-center justify-center rounded-full bg-background-2 border border-stroke-1"
             >
-              <span className="absolute block h-0.5 w-4 rotate-45 bg-white/90" />
-              <span className="absolute block h-0.5 w-4 -rotate-45 bg-white/90" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="stroke-secondary"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
             </button>
           </div>
 
-          <div className="scroll-bar mt-6 h-[80vh] w-full overflow-x-hidden overflow-y-auto pb-10">
-            <ul className="space-y-2">
-              {navigation.map((entry) =>
-                "items" in entry ? (
-                  <li key={entry.label} className="space-y-2">
-                    <button
-                      type="button"
-                      aria-expanded={mobileSection === entry.menu}
-                      onClick={() => setMobileSection(mobileSection === entry.menu ? null : entry.menu)}
-                      className="flex w-full cursor-pointer items-center justify-between py-2.5"
-                    >
-                      <span className="font-sora text-tagline-2 block font-normal text-white/90">{entry.label}</span>
-                      <span className={`transition-transform duration-300 ${mobileSection === entry.menu ? "rotate-90" : ""}`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                          <path d="M10 12L14 8L10 4" className="stroke-white/90" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                    </button>
-                    <ul className={mobileSection === entry.menu ? "block" : "hidden"}>
-                      {entry.items.map((item) => (
-                        <li key={item.href + item.title}>
-                          <Link
-                            href={item.href}
-                            onClick={closeAll}
-                            className="text-tagline-3 ml-4 block py-2.5 text-left font-normal text-white/80 transition-colors duration-200 hover:text-white"
-                          >
-                            {item.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ) : (
+          <ul className="space-y-4 py-6 flex-1">
+            {navigation.map((entry) => {
+              if (!("items" in entry)) {
+                return (
                   <li key={entry.label}>
                     <Link
                       href={entry.href}
-                      onClick={closeAll}
-                      className="font-sora text-tagline-2 block py-2.5 font-normal text-white/90"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-heading-6 text-secondary font-medium block py-2"
                     >
                       {entry.label}
                     </Link>
                   </li>
-                ),
-              )}
-            </ul>
-            <div className="mt-6" onClick={closeAll}>
-              <Button href="/contact">Get started</Button>
-            </div>
+                );
+              }
+              return (
+                <li key={entry.label} className="space-y-2">
+                  <p className="text-tagline-3 uppercase tracking-wider text-secondary/60 font-semibold">
+                    {entry.label}
+                  </p>
+                  <ul className="pl-3 space-y-2 border-l-2 border-primary-500/30">
+                    {entry.items.map((sub) => (
+                      <li key={sub.title}>
+                        <Link
+                          href={sub.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="text-tagline-1 text-secondary block py-1"
+                        >
+                          {sub.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="pt-4 border-t border-stroke-1">
+            <Link
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="btn btn-primary btn-xl w-full text-center"
+            >
+              <span>Get started</span>
+            </Link>
           </div>
-        </div>
-      </aside>
+        </aside>
+      )}
     </header>
   );
 }

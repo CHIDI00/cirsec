@@ -7,7 +7,7 @@ export type AccordionEntry = {
   answer: string | ReactNode;
 };
 
-/** One-open-at-a-time FAQ accordion with an animated height (CSS grid rows). */
+/** One-open-at-a-time FAQ accordion with smooth toggle and clean styling. */
 export function Accordion({
   items,
   defaultOpen = 0,
@@ -21,7 +21,7 @@ export function Accordion({
   const baseId = useId();
 
   return (
-    <div className={`accordion space-y-3 ${className}`}>
+    <div className={`space-y-3.5 ${className}`}>
       {items.map((item, i) => {
         const isOpen = open === i;
         const buttonId = `${baseId}-btn-${i}`;
@@ -29,7 +29,9 @@ export function Accordion({
         return (
           <div
             key={item.question}
-            className={`accordion-item border-stroke-1/10 rounded-lg border px-6 transition-colors duration-300 ${isOpen ? "is-open bg-white/[0.03]" : ""}`}
+            className={`rounded-2xl border transition-all duration-200 bg-white shadow-sm ${
+              isOpen ? "border-primary-500/40 ring-1 ring-primary-500/10" : "border-stroke-1 hover:border-stroke-2"
+            }`}
           >
             <h3>
               <button
@@ -38,19 +40,40 @@ export function Accordion({
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpen(isOpen ? null : i)}
-                className={`flex w-full cursor-pointer items-center justify-between gap-4 pt-6 text-left transition-all duration-300 ease-in-out ${isOpen ? "pb-4" : "pb-6"}`}
+                className="flex w-full cursor-pointer items-center justify-between gap-4 p-5 sm:p-6 text-left"
               >
-                <span className="font-inter-tight text-tagline-2 text-white">{item.question}</span>
-                <span className="accordion-plus-icon" aria-hidden="true" />
+                <span className="font-inter-tight text-tagline-1 font-medium text-secondary">
+                  {item.question}
+                </span>
+                <span
+                  className={`size-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                    isOpen ? "rotate-180 bg-primary-500 text-white" : "bg-background-2 text-secondary/60"
+                  }`}
+                  aria-hidden="true"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </span>
               </button>
             </h3>
-            <div id={panelId} role="region" aria-labelledby={buttonId} className="accordion-body">
-              <div className="overflow-hidden">
-                <div className="text-tagline-2 font-inter-tight max-w-[531px] pb-6 font-extralight text-white/50">
+            {isOpen && (
+              <div id={panelId} role="region" aria-labelledby={buttonId} className="px-5 sm:px-6 pb-6 pt-1 border-t border-stroke-1/60">
+                <div className="text-tagline-2 font-inter-tight text-secondary/70 leading-relaxed">
                   {item.answer}
                 </div>
               </div>
-            </div>
+            )}
           </div>
         );
       })}

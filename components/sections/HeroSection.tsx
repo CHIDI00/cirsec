@@ -1,201 +1,261 @@
+"use client";
+
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
-import { SplitReveal } from "@/components/ui/SplitReveal";
-import { VideoTrigger } from "@/components/ui/VideoModal";
-import { site } from "@/lib/site";
+
+const clientLogos = [
+  { name: "Partner 1", src: "/images/icons/client-logo-6.svg" },
+  { name: "Partner 2", src: "/images/icons/client-logo-7.svg" },
+  { name: "Partner 3", src: "/images/icons/client-logo-8.svg" },
+  { name: "Partner 4", src: "/images/icons/client-logo-9.svg" },
+  { name: "Partner 5", src: "/images/icons/client-logo-10.svg" },
+];
 
 export function HeroSection() {
   return (
-    <section
-      className="relative overflow-hidden pt-34 sm:pt-36 md:pt-40 lg:pt-44 xl:pt-50"
-      aria-labelledby="hero-heading"
-    >
-      <div className="main-container relative z-10">
-        <div className="space-y-[55px]">
-          <div className="space-y-10 md:space-y-14">
-            {/* Headline and Lead */}
-            <div className="space-y-3 text-center">
-              <h1
-                id="hero-heading"
-                className="font-sora text-sora-heading-3 md:text-sora-heading-2 lg:text-sora-heading-1 mx-auto w-full max-w-[1136px] max-md:leading-[110%]"
-              >
-                <span className="inline-flex flex-wrap items-center justify-center gap-x-2 font-normal text-white/90">
-                  Cybersecurity
-                  <VideoTrigger
-                    url={site.heroVideoUrl}
-                    label="Watch how Cirsec builds digital safety"
-                    className="group relative my-auto inline-block h-14 w-[102px] cursor-pointer overflow-hidden rounded-full border-4 border-brand-cyan/30 md:h-[66px] transition-transform duration-300 hover:scale-105"
+    <section id="hero" className="hero-section sm:py-[100px] py-[60px] bg-white relative overflow-hidden">
+      {/* Hero Card Container */}
+      <div className="relative overflow-hidden 2xl:max-w-[1440px] xl:max-w-[1240px] lg:max-w-[980px] md:max-w-[700px] max-w-[600px] mx-auto 2xl:px-0 px-6 w-full sm:pt-[150px] pt-[120px] sm:pb-[100px] pb-[50px] rounded-4xl sm:border border-stroke-1 bg-background-2 lg:space-y-[70px] space-y-10 shadow-sm">
+        {/* Left Ambient Gradient */}
+        <div className="absolute -top-[29%] sm:-top-[50%] left-[7%] sm:-left-[30%] -rotate-[326deg] w-full h-full -z-0 pointer-events-none select-none opacity-85">
+          <Image
+            src="/images/ns-img-498.png"
+            alt="gradient glow"
+            width={800}
+            height={800}
+            className="w-full h-full object-contain"
+            priority
+          />
+        </div>
+
+        {/* Right Ambient Gradient */}
+        <div className="absolute -top-[65%] -right-[57%] w-full -rotate-[75deg] h-full -z-0 pointer-events-none select-none opacity-85">
+          <Image
+            src="/images/ns-img-498.png"
+            alt="gradient glow"
+            width={800}
+            height={800}
+            className="w-full h-full object-contain rotate-180"
+            priority
+          />
+        </div>
+
+        {/* Center Text Block */}
+        <div className="relative z-10">
+          <div className="space-y-5 text-center">
+            <Reveal delay={0.1}>
+              <span className="badge badge-green">
+                Cybersecurity &amp; Technology Initiative
+              </span>
+            </Reveal>
+
+            <div className="space-y-4 lg:max-w-[720px] sm:max-w-[540px] max-w-[420px] mx-auto">
+              <Reveal delay={0.2}>
+                <h1 className="text-secondary font-medium tracking-tight">
+                  Cyber security for a safer tomorrow
+                </h1>
+              </Reveal>
+
+              <Reveal delay={0.3}>
+                <p className="text-secondary/70 text-tagline-1 leading-relaxed">
+                  Cirsec empowers individuals and organisations through awareness, practical
+                  engagement, and modern threat defense to navigate digital technology safely.
+                </p>
+              </Reveal>
+            </div>
+
+            {/* CTA Buttons */}
+            <Reveal delay={0.4}>
+              <ul className="flex sm:flex-row flex-col items-center justify-center gap-4 mt-8 lg:mt-12">
+                <li className="w-full sm:w-auto">
+                  <Link
+                    href="#contact"
+                    className="btn btn-primary btn-xl sm:w-auto w-[90%] font-medium"
                   >
-                    <Image
-                      src="/images/opai-img-96.png"
-                      alt="Cirsec in action"
-                      fill
-                      sizes="102px"
-                      className="size-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-125 group-hover:rotate-6"
-                    />
-                    <span
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex size-7 items-center justify-center rounded-full bg-brand-ink/70 backdrop-blur-xs text-white"
-                      aria-hidden="true"
-                    >
+                    <span>Request consultation</span>
+                  </Link>
+                </li>
+                <li className="w-full sm:w-auto">
+                  <Link
+                    href="#features"
+                    className="btn btn-white btn-xl sm:w-auto w-[90%] font-medium"
+                  >
+                    <span>Explore initiatives</span>
+                  </Link>
+                </li>
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Hero Interactive Widget Showcase */}
+        <div className="relative z-10">
+          <div className="main-container">
+            <div className="flex sm:flex-row flex-col items-center 2xl:gap-10 lg:gap-8 gap-5">
+              {/* Left Column: Data Protection + 5.0 Rating Pill */}
+              <div className="space-y-5 2xl:max-w-[389px] sm:max-w-[350px] max-w-full sm:w-full min-[550px]:w-[80%] w-full">
+                {/* Data Protection Pill */}
+                <div className="flex items-center gap-4 justify-center bg-white 2xl:px-8 px-6 2xl:py-[22px] py-5 rounded-full border border-stroke-4 shadow-sm">
+                  <div className="space-y-1">
+                    <div className="2xl:size-16 xl:size-14 size-12 mx-auto flex items-center justify-center rounded-full bg-ns-green">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="13"
-                        height="15"
-                        viewBox="0 0 13 15"
-                        fill="currentColor"
-                        className="translate-x-0.5"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 32 32"
+                        fill="none"
                       >
-                        <path d="M0 2.00317C0 0.420843 1.75049 -0.53484 3.08152 0.320818L11.383 5.65749C12.6076 6.44476 12.6076 8.23493 11.383 9.0222L3.08152 14.3589C1.75049 15.2145 0 14.2588 0 12.6765V2.00317Z" />
+                        <path
+                          d="M5 13.3333V6C5 5.73478 5.10536 5.48043 5.29289 5.29289C5.48043 5.10536 5.73478 5 6 5H26C26.2652 5 26.5196 5.10536 26.7071 5.29289C26.8946 5.48043 27 5.73478 27 6V13.3333C27 23.8353 18.0868 27.3146 16.307 27.9047C16.1081 27.9731 15.8919 27.9731 15.693 27.9047C13.9133 27.3146 5 23.8353 5 13.3333Z"
+                          stroke="#1A1A1C"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
-                    </span>
-                  </VideoTrigger>
-                </span>{" "}
-                <span className="text-white/40">
-                  built for real <br className="hidden md:block" />
-                  human impact
-                </span>
-              </h1>
-
-              <SplitReveal
-                delay={0.3}
-                lineDelay={0.1}
-                className="font-inter-tight text-tagline-2 mx-auto w-full max-w-[580px] font-normal text-white/60"
-              >
-                <p>
-                  A cybersecurity and technology initiative helping individuals and organisations
-                  understand cyber risks and adopt safer digital practices.
-                </p>
-              </SplitReveal>
-            </div>
-
-            {/* Action Buttons */}
-            <div
-              className="flex items-center justify-center gap-x-6 lg:gap-x-14"
-              aria-label="Action buttons"
-            >
-              <Reveal delay={0.9} duration={0.7}>
-                <div className="relative group inline-block">
-                  <Button href="/about" className="shadow-[0_4px_24px_rgba(28,80,208,0.5)]">
-                    Explore our mission
-                  </Button>
-                  {/* Decorative expanding rings */}
-                  <span
-                    className="pointer-events-none absolute top-1/2 left-1/2 h-[68px] w-[107%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/20"
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="pointer-events-none absolute top-1/2 left-1/2 h-[84px] w-[115%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10"
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="pointer-events-none absolute top-1/2 left-1/2 h-[100px] w-[123%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5"
-                    aria-hidden="true"
-                  />
+                    </div>
+                    <p className="text-secondary font-medium xl:text-tagline-2 text-tagline-3 text-center">
+                      Data Protection
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-secondary font-medium xl:text-heading-5 text-heading-6">
+                      Proactive Guard
+                    </p>
+                    <p className="text-secondary/60 xl:text-tagline-1 text-tagline-2">
+                      Zero-trust telemetry
+                    </p>
+                  </div>
                 </div>
-              </Reveal>
 
-              <Reveal delay={1} duration={0.7}>
-                <VideoTrigger
-                  url={site.demoVideoUrl}
-                  label="Play overview video"
-                  className="group relative z-20 flex size-[52px] cursor-pointer items-center justify-center rounded-full border border-white/20 bg-background-7 transition-all duration-300 hover:scale-105 hover:border-brand-cyan"
-                >
-                  <span
-                    className="flex size-6 items-center justify-center gap-x-1 overflow-hidden"
-                    aria-hidden="true"
-                  >
+                {/* 5.0 Rating Pill */}
+                <div className="flex items-center gap-4 justify-between bg-white 2xl:px-8 px-6 2xl:py-[22px] py-5 rounded-full border border-stroke-4 shadow-sm">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <p className="text-heading-6 sm:text-heading-5 font-bold text-secondary">
+                        5.0
+                      </p>
+                      <span className="flex text-amber-400">
+                        &#9733;&#9733;&#9733;&#9733;&#9733;
+                      </span>
+                    </div>
+                    <p className="text-secondary/60 text-tagline-2">
+                      Trusted community rating
+                    </p>
+                  </div>
+                  <div className="size-10 rounded-full bg-secondary text-white flex items-center justify-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="13"
-                      height="15"
-                      viewBox="0 0 13 15"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
                       fill="none"
-                      className="fill-background-6 h-[18px] w-[14px] shrink-0 -translate-x-4 scale-95 transition-all duration-400 ease-out group-hover:translate-x-3 group-hover:scale-100"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
-                      <path d="M0 2.00317C0 0.420843 1.75049 -0.53484 3.08152 0.320818L11.383 5.65749C12.6076 6.44476 12.6076 8.23493 11.383 9.0222L3.08152 14.3589C1.75049 15.2145 0 14.2588 0 12.6765V2.00317Z" />
+                      <path d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="13"
-                      height="15"
-                      viewBox="0 0 13 15"
-                      fill="none"
-                      className="fill-background-6 h-[18px] w-[14px] shrink-0 -translate-x-[7px] scale-100 transition-all duration-400 ease-out group-hover:translate-x-3 group-hover:scale-75"
-                    >
-                      <path d="M0 2.00317C0 0.420843 1.75049 -0.53484 3.08152 0.320818L11.383 5.65749C12.6076 6.44476 12.6076 8.23493 11.383 9.0222L3.08152 14.3589C1.75049 15.2145 0 14.2588 0 12.6765V2.00317Z" />
-                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Center Column: Central Glowing Dark Security Shield */}
+              <div className="flex-1 w-full flex justify-center">
+                <div className="relative overflow-hidden w-full max-w-[480px] bg-secondary rounded-[28px] p-7 text-center shadow-xl border border-secondary/20">
+                  <div className="space-y-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs text-white">
+                      <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>Secured proxy protection</span>
+                    </div>
+
+                    <div className="relative size-48 sm:size-56 mx-auto my-2">
+                      <Image
+                        src="/images/ns-img-dark-71.svg"
+                        alt="Security Globe"
+                        width={240}
+                        height={240}
+                        className="size-full object-contain"
+                      />
+                    </div>
+
+                    <div className="space-y-1 text-white">
+                      <p className="text-tagline-1 font-medium">Threats Neutralized</p>
+                      <p className="text-tagline-3 text-white/60">
+                        24/7 Automated Perimeter Surveillance
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Security Performance + User Proof */}
+              <div className="space-y-5 2xl:max-w-[389px] sm:max-w-[350px] max-w-full sm:w-full min-[550px]:w-[80%] w-full">
+                {/* 98.5% Hygiene Metric Pill */}
+                <div className="flex items-center gap-4 justify-between bg-white 2xl:px-8 px-6 2xl:py-[22px] py-5 rounded-full border border-stroke-4 shadow-sm">
+                  <div className="space-y-1">
+                    <p className="text-heading-6 sm:text-heading-5 font-bold text-secondary">
+                      98.5%
+                    </p>
+                    <p className="text-secondary/60 text-tagline-2">
+                      Security Hygiene Score
+                    </p>
+                  </div>
+                  <div className="size-11 rounded-full bg-ns-green/30 flex items-center justify-center">
+                    <div className="flex items-end gap-1">
+                      <div className="w-1 h-3 bg-secondary rounded-full" />
+                      <div className="w-1 h-5 bg-secondary rounded-full" />
+                      <div className="w-1 h-2 bg-secondary rounded-full" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3 Interactive Icons Bar */}
+                <div className="flex items-center justify-around bg-white 2xl:px-8 px-6 2xl:py-4 py-3.5 rounded-full border border-stroke-4 shadow-sm">
+                  <span className="size-10 rounded-full bg-[#D9F99D] flex items-center justify-center text-xs font-semibold text-secondary">
+                    WEB
                   </span>
-                  {/* Decorative concentric rings */}
-                  <span
-                    className="pointer-events-none absolute top-1/2 left-1/2 size-17 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/20"
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="pointer-events-none absolute top-1/2 left-1/2 size-21 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10"
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="pointer-events-none absolute top-1/2 left-1/2 size-25 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5"
-                    aria-hidden="true"
-                  />
-                </VideoTrigger>
-              </Reveal>
+                  <span className="size-10 rounded-full bg-[#67E8F9] flex items-center justify-center text-xs font-semibold text-secondary">
+                    IAM
+                  </span>
+                  <span className="size-10 rounded-full bg-[#C084FC] flex items-center justify-center text-xs font-semibold text-secondary">
+                    SOC
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* Hero Visual Mockup */}
-          <Reveal
-            delay={1.1}
-            duration={0.7}
-            instant
-            className="relative z-10 mx-auto h-[300px] max-w-[1223px] md:h-[400px] lg:h-[573px]"
-          >
-            <figure className="relative size-full">
-              <Image
-                src="/images/opai-img-95.png"
-                alt="Cirsec digital safety platform interface"
-                priority
-                fill
-                sizes="(max-width: 1280px) 100vw, 1223px"
-                className="object-cover md:object-contain"
-              />
-            </figure>
-          </Reveal>
         </div>
       </div>
 
-      {/* Hero Video Background with Brand Hue Tint */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="brand-hue absolute bottom-0 left-0 z-0 size-full object-cover object-center opacity-70"
-      >
-        <source src="/video/hero-bg.mp4" type="video/mp4" />
-      </video>
-
-      {/* Gradient Overlays */}
-      <div
-        className="to-background-7 pointer-events-none absolute -bottom-10 left-0 z-10 h-[184px] w-full bg-gradient-to-b from-transparent from-[10.09%] to-[89.05%]"
-        aria-hidden="true"
-      />
-      <div
-        className="to-background-7 pointer-events-none absolute -bottom-12 left-0 z-10 h-[104px] w-full bg-gradient-to-b from-transparent from-[10.09%] to-[69.05%]"
-        aria-hidden="true"
-      />
-      <div
-        className="to-background-7 pointer-events-none absolute -bottom-2 left-0 z-10 h-[40px] w-full bg-gradient-to-b from-transparent from-[10.09%] to-[55.05%]"
-        aria-hidden="true"
-      />
-
-      {/* Bottom blend mode graphic */}
-      <div
-        className="absolute left-0 z-10 hidden h-[200px] w-full min-[1920px]:-bottom-5 lg:-bottom-22 lg:block xl:-bottom-17 2xl:-bottom-7"
-        aria-hidden="true"
-      >
-        <Image src="/images/blend.png" alt="" fill sizes="100vw" className="object-cover" />
+      {/* Partner Logos Trust Marquee */}
+      <div className="lg:pt-[80px] pt-[40px] relative z-10 bg-white">
+        <div className="main-container">
+          <div className="space-y-6">
+            <p className="text-heading-6 font-normal text-secondary/60 text-center tracking-wide">
+              Trusted by industry leaders and community organizations
+            </p>
+            <div className="relative overflow-hidden py-2">
+              <div className="logos-marquee-container">
+                <div className="flex items-center gap-12 justify-center py-2">
+                  {clientLogos.map((client, idx) => (
+                    <figure key={idx} className="min-w-[130px] md:min-w-[170px] opacity-70 hover:opacity-100 transition-opacity">
+                      <Image
+                        src={client.src}
+                        alt={client.name}
+                        width={160}
+                        height={40}
+                        className="h-8 md:h-10 w-auto object-contain"
+                      />
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

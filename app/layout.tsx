@@ -73,11 +73,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background-6 text-white selection:bg-brand selection:text-white">
+      <body className="min-h-full flex flex-col bg-white text-secondary selection:bg-brand selection:text-white">
         <SmoothScroll />
         <VideoModalProvider>
           <Navbar />
-          <main className="flex-1 bg-background-6">{children}</main>
+          <main className="flex-1 bg-white">{children}</main>
           <Footer />
         </VideoModalProvider>
       </body>

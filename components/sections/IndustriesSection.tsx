@@ -99,7 +99,7 @@ export function IndustriesSection() {
               <Reveal
                 key={item.title}
                 delay={item.delay}
-                className="group relative flex flex-col items-center gap-6 rounded-xl border border-stroke-3/15 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-brand-blue/30"
+                className="group relative flex flex-col items-center gap-6 rounded-xl border border-stroke-3/15 bg-white p-8 text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-brand-blue/30"
               >
                 {/* Accent top line on hover */}
                 <div className="absolute top-0 left-8 right-8 h-1 rounded-t-xl bg-gradient-to-r from-brand to-brand-cyan opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

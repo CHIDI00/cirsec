@@ -7,7 +7,7 @@ export function CtaBannerSection() {
   return (
     <section className="bg-background-6 py-10 md:py-20 lg:py-24">
       <div className="main-container">
-        <div className="bg-gradient-to-br from-background-5 via-background-5 to-brand-navy/60 relative flex flex-col lg:flex-row items-center justify-between overflow-hidden rounded-2xl p-8 sm:p-12 lg:p-16 xl:p-20 border border-white/10 shadow-2xl">
+        <div className="bg-gradient-to-br from-background-5 via-background-5 to-brand-navy/60 relative flex flex-col lg:flex-row items-center justify-between overflow-hidden rounded-2xl p-8 sm:p-12 lg:p-16 xl:p-20 border border-white/10">
           {/* Subtle glow orb */}
           <div className="pointer-events-none absolute -top-24 -left-24 size-80 rounded-full bg-brand/30 blur-[90px]" />
           <div className="pointer-events-none absolute -bottom-24 right-1/3 size-80 rounded-full bg-brand-cyan/20 blur-[100px]" />
